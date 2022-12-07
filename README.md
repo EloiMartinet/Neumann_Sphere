@@ -4,7 +4,12 @@
 
 Welcome to my GitHub repository ! Here you can find the numerical optima that appears in the paper (link).
 
-In both level-set and density cases, a FreeFem++ script is provided in order to compute the eigenvalues of the optimums, which are stored in MEDIT format.
+In order to use the files of this repository, you first have to clone it :
+```
+https://github.com/EloiMartinet/Neumann_Sphere.git
+```
+
+In both levelset and density cases, a FreeFem++ script is provided in order to compute the eigenvalues of the optimums, which are stored in MEDIT format.
 In order to execute the scripts, first install FreeFem++ (https://freefem.org/). You can then go into the density folder in your command-line and execute
 
 ```
