@@ -1,4 +1,4 @@
-# Neumann_Sphere
+# Numerical maximization of eigenvalues for densities and domains of the sphere.
 
 ![Image of optimal densities for the first eigenvalue](https://github.com/EloiMartinet/Neumann_Sphere/blob/master/banner.png)
 
