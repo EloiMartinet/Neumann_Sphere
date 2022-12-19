@@ -13,17 +13,25 @@ In both levelset and density cases, a FreeFem++ script is provided in order to c
 In order to execute the scripts, first install FreeFem++ (https://freefem.org/). You can then go into the density folder in your command-line and execute
 
 ```
-FreeFem++ Neumann_Sphere.edp mu_1/11.6
+FreeFem++ Neumann_Sphere_Density.edp mu_1/11.6
 ```
 
 Note that we don't precise any extension, since the script will automatically load the *.mesh and *.sol files.
-You can run the same command from the levelset folder to get the corresponding eigenvalues.
+Similarly you can run the command
+```
+FreeFem++ Neumann_Sphere_LS.edp mu_2/7.121706429550119
+```
+from the Levelset folder to get the corresponding eigenvalues.
 
 In order to visualize the results, you will need to install MEDIT (https://hal.inria.fr/inria-00069921/document) and, still from the Density folder, execute
 ```
 medit mu_1/11.6
 ```
-and then simply type the  "m" key to show the density.
+and then simply type the  "m" key to show the density. You can also uncomment the line
+```
+// medit("Optimal density.", Th, rho, wait=1);
+```
+in the file Neumann_Sphere_Density.edp but be aware that the display takes a lot of time in this case.
 
 Similar simulations on the plane can be found at https://github.com/EloiMartinet/Maximization_Of_Neumann_Eigenvalues.
 
