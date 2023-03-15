@@ -1,0 +1,44 @@
+load "medit"
+load "msh3"
+
+// To make FreeFem++ a bit more quiet
+verbosity = 0;
+
+macro GradS(s) [dx(s), dy(s), dz(s)] // EOM
+
+// The paths of the files
+string meshPath = ARGV[2];
+
+// The parameter to make the problem elliptic
+real epsilon = 1e-4;
+
+// Opening the mesh file
+meshS Th = readmeshS(meshPath);
+
+// Defining the Finite Element space
+fespace Vh(Th, P1);
+Vh rho, uh, vh;
+
+// Shows the mesh
+medit("Optimal domain using levelset method", Th, rho, wait=1);
+
+real surf = int2d(Th)(1);
+
+cout << "Surface area : " << surf << endl;
+// Set the bilinear forms
+varf va(uh, vh) = int2d(Th)(GradS(uh)'*GradS(vh));
+varf vb(uh, vh) = int2d(Th)(uh*vh);
+
+matrix A = va(Vh, Vh ,solver = sparsesolver); // Matrix A on left side
+matrix B = vb(Vh, Vh);                        // Matrix B on right side
+
+// Get first Eigenvalues
+int eigCount = 10;
+real[int] ev(eigCount); // Holds Eigenvalues
+Vh[int] eV(eigCount);   // Holds Eigenfunctions
+
+int numEigs = EigenValue(A,B,sym=true,sigma=0,value=ev,vector=eV);
+
+for(int i=0;i<eigCount;i++) { // Plot the spectrum and show the eigenvalues
+  cout << "Eigenvalue " << i << " :"  << ev[i] << endl;
+}

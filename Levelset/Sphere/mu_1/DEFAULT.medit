@@ -1,0 +1,37 @@
+#  File created with Medit 4.1a
+#  Release Mar. 30, 2012
+# Created: Fri Mar 18 10:51:15 2022
+
+#  Assign background color
+BackgroundColor
+0.980000 0.980000 0.980000
+LineColor
+0.900000 0.900000 0.900000
+
+RenderMode
+colorshading
+
+#  Window Size
+WindowSize
+600 600
+# Color palette
+Palette
+-0.313281 -0.096209 0.120864 0.337937 0.555009
+
+# Subdomains colors
+NbMaterials
+2
+# Material MAT02 2
+Material MAT02 2
+0.20 0.20 0.20 1.00
+0.10 0.10 0.10 0.50
+0.00 0.00 0.00 1.00
+0.00 0.00 0.00 1.00
+80.00
+# Material MAT03 3
+Material MAT03 3
+0.20 0.20 0.20 1.00
+1.00 1.00 0.00 1.00
+0.20 0.20 0.20 1.00
+0.00 0.00 0.00 1.00
+80.00

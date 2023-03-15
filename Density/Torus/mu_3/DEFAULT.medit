@@ -1,0 +1,28 @@
+#  File created with Medit 4.1a
+#  Release Mar. 30, 2012
+# Created: Fri Mar 18 10:51:15 2022
+
+BackgroundColor
+0.980000 0.980000 0.980000
+
+RenderMode
+colorshading
+
+SunPosition
+1. 1. 2.
+
+NbMaterials
+1
+Material DEFAULT_MAT
+0.100000 0.100000 0.100000 1.000000
+0.800000 0.800000 0.800000 1.000000
+0.000000 0.000000 0.000000 0.000000
+0.000000 0.000000 0.000000 1.000000
+80.000000
+
+#  Window Size
+WindowSize
+600 600
+# Color palette
+Palette
+0.0 0.25 0.50 0.75 1.0
