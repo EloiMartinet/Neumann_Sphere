@@ -1,4 +1,4 @@
-# Neumann_Manifolds
+# Neumann_Sphere
 
 ![Image of optimal densities for the first eigenvalue](https://github.com/EloiMartinet/Neumann_Sphere/blob/master/banner.png)
 
@@ -13,13 +13,13 @@ In both levelset and density cases, a FreeFem++ script is provided in order to c
 In order to execute the scripts, first install FreeFem++ (https://freefem.org/). You can then go into the Density folder in your command-line and execute
 
 ```
-FreeFem++ Neumann_Sphere_Density.edp Sphere/mu_1/11.6
+FreeFem++ Neumann_Density.edp Sphere/mu_1/11.6
 ```
 
 Note that we don't precise any extension, since the script will automatically load the *.mesh and *.sol files.
 Similarly you can run the command
 ```
-FreeFem++ Neumann_Sphere_LS.edp Sphere/mu_2/7.121706429550119
+FreeFem++ Neumann_LS.edp Sphere/mu_2/7.121706429550119
 ```
 from the Levelset folder to get the corresponding eigenvalues.
 
