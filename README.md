@@ -1,6 +1,6 @@
-# Neumann_Sphere
+# Numerical shape optimization of Neumann eigenvalues on the sphere and the torus
 
-![Image of optimal densities for the first eigenvalue](https://github.com/EloiMartinet/Neumann_Sphere/blob/master/banner.png)
+![Image of optimal densities for the first eigenvalue](https://github.com/EloiMartinet/Neumann_Sphere/blob/main/banner.png)
 
 Welcome to my GitHub repository ! Here you can find the numerical optima that appears in the paper (link).
 
