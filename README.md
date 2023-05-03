@@ -2,7 +2,7 @@
 
 ![Image of optimal densities for the first eigenvalue](https://github.com/EloiMartinet/Neumann_Sphere/blob/main/banner.png)
 
-Welcome to my GitHub repository ! Here you can find the numerical optima that appears in the paper (link).
+Welcome to my GitHub repository ! Here you can find the numerical optima that appears in the paper https://arxiv.org/abs/2303.12389.
 
 In order to use the files of this repository, you first have to clone it :
 ```
