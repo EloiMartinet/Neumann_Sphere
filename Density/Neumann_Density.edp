@@ -72,3 +72,30 @@ int numEigs = EigenValue(A,B,sym=true,sigma=0,value=ev,vector=eV);
 for(int i=0;i<eigCount;i++) { // Plot the spectrum and show the eigenvalues
   cout << "Eigenvalue " << i << " : "  << ev[i] << endl;
 }
+
+
+/* Save scalar function u as a .sol file */
+func int printsol(string sout, real[int] & u) {
+
+  int n = u.n;
+  ofstream fout(sout);
+
+  /* Header */
+  fout << "MeshVersionFormatted 1\n\nDimension 3\n\nSolAtVertices\n"<<n<<"\n1 1\n"<<endl;
+
+  /* Print values */
+  for (int k=0; k<n; k++)
+    fout<<u[k]<<endl;
+
+  /* End keyword */
+  fout<<"End"<<endl;
+
+  return(1);
+}
+
+Vh u = eV[1];
+printsol("sphere_with_strip.sol",eV[1][]);
+savemesh(Th, "sphere_with_strip.mesh");
+
+cout << "Valeurs propres : " << ev << endl;
+cout << "Surface totale : " << int2d(Th)(1) << endl;
