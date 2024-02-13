@@ -57,6 +57,6 @@ Similar simulations on the plane can be found at https://github.com/EloiMartinet
 
 ### Level-set optimization
 
-
+In addition to the previous tools, you will need to install the Advection tool (https://github.com/ISCDtoolbox/Advection) which allows you to advect the level-set function. For remeshing, please install mmgtools (https://www.mmgtools.org/). For distance function related operations, please install mshdist (https://github.com/ISCDtoolbox/Mshdist).
 
 You can find more wonderful simulations at https://eloimartinet.github.io/ !
