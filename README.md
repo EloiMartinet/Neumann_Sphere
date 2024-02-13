@@ -45,9 +45,7 @@ This will output the result of each iteration in medit format in the folder `res
 ```
 medit results/rho -a 0 N
 ```
-where N is the number of iterations.
-
-Note that the optimization is carried for a single mass. The parameters of the optimization can be changed directly inside the `main()` function of `optimizer.py`.
+where N is the number of iterations. The parameters of the optimization can be changed directly inside the `main()` function of `optimizer.py` (maximum number of iterations, regularization parameters, meshes used, etc).
 
 The `optimizer.py` file needs some pre-computed derivatives (in `derivatives`) which depend on the GetFEM meshes (in `meshes`). The derivatives are provided, but you can re-compute them by executing 
 ```
