@@ -10,11 +10,6 @@ from medit_to_getfem import *           # Medit <> GetFEM utiliy functions (mesh
 # Shut GetFEM up
 gf.util_trace_level(level=0)
 
-# The regions used by MMG
-INNER_REGION = 3
-OUTER_REGION = 2
-BOUNDARY_REGION = 10
-
 def mmgs(mesh, sol, level=0.0, hmin=1e-5, hmax=1e-2, mesh_out=None, log=None):
     #
     #   Remeshs with respect to the level set function
@@ -227,10 +222,17 @@ def main():
             # Regularizing the levelset function
             ls = medit_mesh.load_solution(f"{tmp_folder}/ls.{i-1}.sol")
             gf_ls = ls[medit_to_dof_indices]
-            gf_ls = heat_equation(gf_ls, V, IM, 1e-3, step=1)
+            gf_ls = heat_equation(gf_ls, V, IM, 1e-4, step=1)
             ls = gf_ls[dof_to_medit_indices]
             medit_mesh.save_solution(ls, f"{tmp_folder}/ls.{i-1}.sol")
 
+            # The behavior of MMG has changed since the preprint. Need to delete the marked edges 
+            # (the 0 level set at each remeshing) or MMG will keep them and this will result in too thin triangles
+            medit_mesh.set_all_triangles_labels_to(0)   # Also drop the regions otherwise MMG automatically add an edge between them
+            medit_mesh.delete_edges() 
+            medit_mesh.save(f"{tmp_folder}/ls.{i-1}.mesh")
+
+            
             # Using MMG tools to remesh
             mmgs(f"{tmp_folder}/ls.{i-1}.mesh", f"{tmp_folder}/ls.{i-1}.sol",
                  mesh_out=f"{tmp_folder}/ls.{i}.mesh", hmin=hmin, hmax=hmax)
@@ -238,7 +240,6 @@ def main():
             # We reload the new mesh
             medit_mesh = MeditS().load(f"{tmp_folder}/ls.{i}.mesh")
             medit_mesh.vertices = renormalize(medit_mesh.vertices)  # The sphere tends to bulge after a lot of remeshing
-            medit_mesh.delete_edges() # The behavior of MMG has changed since the preprint. Need to delete the marked edges (the 0 level set at each remeshing) or MMG will keep them and this will result in too thin triangles
             medit_mesh.save(f"{tmp_folder}/ls.{i}.mesh")
             mesh = medit_mesh.to_getfem()
 
@@ -283,7 +284,7 @@ def main():
         medit_mesh.save(f"{tmp_folder}/chi.{i}.mesh").save_solution(characteristic(ls), f"{tmp_folder}/chi.{i}.sol")
 
         # Advect
-        dt = 4*hmax/infty_norm(velocity)
+        dt = 2*hmax/infty_norm(velocity)
         print("Advect surface")
         advect_surface(f"{tmp_folder}/ls.{i}.mesh", f"{tmp_folder}/ls.{i}.sol",
                        f"{tmp_folder}/vel.{i}.sol", dt, f"{tmp_folder}/ls.{i}.sol",None)
