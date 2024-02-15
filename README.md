@@ -59,4 +59,22 @@ Similar simulations on the plane can be found at https://github.com/EloiMartinet
 
 In addition to the previous tools, you will need to install the Advection tool (https://github.com/ISCDtoolbox/Advection) which allows you to advect the level-set function. For remeshing, please install mmgtools (https://www.mmgtools.org/). For distance function related operations, please install mshdist (https://github.com/ISCDtoolbox/Mshdist).
 
+Please navigate to the folder `Levelset/Sphere/code`. There is two main files : `ersatz.py` and `remeshing.py`, each corresponding to a method implemented in the paper. Executing 
+```
+python3 ersatz.py
+```
+will output the meshes and level sets obtained by the ersatz procedure to the folder `results`. To visualize them, please run
+```
+medit results/ls -a 0 150
+```
+You can press `C`,`E` in the medit window to display the set (in yellow).
+
+Executing 
+```
+python3 remeshing.py
+```
+will do the same but with the remeshing procedure. The initial mesh is given in `init.mesh` but you can specify another one obtained by the previous algorithm, for instance `results/ls.137.mesh`.
+
+Enjoy!
+
 You can find more wonderful simulations at https://eloimartinet.github.io/ !
